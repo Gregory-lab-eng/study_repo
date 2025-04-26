@@ -1,0 +1,28 @@
+import random
+
+my_array = [random.randint(1,100) for i in range (1,12)]
+print(my_array)
+
+def merge_sort(arr: list):
+    if len(arr) <= 1:
+        return arr
+    c = arr[len(arr)//2:]
+    d = arr[:len(arr)//2]
+    sorted_c = merge_sort(c)
+    sorted_d = merge_sort(d)
+    return merge(sorted_c,sorted_d)
+
+def merge(c,d):
+    i = 0
+    j = 0
+    b = []
+    while i<len(c) and j<len(d):
+        if c[i]<d[j]:
+            b.append(c[i])
+            i +=1
+        else:
+            b.append(d[j])
+            j+=1
+    b.extend(c[i:])
+    b.extend(d[j:])
+    return b
